@@ -1,5 +1,7 @@
 Create database FG100220_FA100620
 
+USE FG100220_FA100620
+
 Create table elecciones_2019(
 id int Primary Key Identity(1,1) not null,
 departamento varchar(50),
@@ -55,7 +57,10 @@ INSERT INTO [elecciones_2019] ([departamento], [candidato], [votos]) VALUES
 ('La Paz', 'Nayib Bukele', 93.179),
 ('La Paz', 'Carlos Calleja', 37.617),
 ('La Paz', 'Hugo Martínez', 22.783),
-('La Paz', 'Otros', 26.421); SELECT
+('La Paz', 'Otros', 26.421); 
+
+CREATE VIEW VistaElecciones2019 AS
+SELECT
  [candidato],
  SUM([votos]) AS CantidadDeVotos,
  CAST(SUM([votos]) * 100.0 / SUM(SUM([votos])) OVER () AS DECIMAL(10, 2)) AS Porcentaje
@@ -63,5 +68,6 @@ FROM
  elecciones_2019
 GROUP BY
  [candidato]
-ORDER BY
- Porcentaje DESC;
+
+
+ SELECT * FROM VistaElecciones2019;

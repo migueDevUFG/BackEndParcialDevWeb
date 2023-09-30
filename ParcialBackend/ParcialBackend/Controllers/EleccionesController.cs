@@ -16,7 +16,7 @@ namespace ParcialBackend.Controllers
         [HttpGet]
         [Route("Elecciones")]
         public async Task<IActionResult> GetElecciones() {
-            List<Elecciones2019> listElecciones = _context.Elecciones2019s.ToList();
+            List<VistaElecciones2019> listElecciones = _context.VistaElecciones2019s.ToList();
             try {
                 if(listElecciones != null) { 
                     return Ok(listElecciones);
